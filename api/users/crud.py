@@ -151,7 +151,7 @@ def update_user(db: Session, user_id: int, user_update: UserUpdate) -> Optional[
             )
     
     # Update user fields
-    update_data = user_update.dict(exclude_unset=True)
+    update_data = user_update.model_dump(exclude_unset=True)
     
     # Handle password update
     if "password" in update_data:

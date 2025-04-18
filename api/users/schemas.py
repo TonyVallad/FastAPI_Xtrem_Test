@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, Field, field_validator, HttpUrl
+from pydantic import BaseModel, EmailStr, Field, field_validator, HttpUrl, ConfigDict
 from typing import Optional, List, Union
 from datetime import datetime
 from enum import Enum
@@ -114,8 +114,7 @@ class UserInDB(UserBase):
     last_login: Optional[datetime] = None
     profile_picture: Optional[str] = None
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Aliases for backward compatibility
 User = UserInDB
@@ -131,8 +130,7 @@ class UserList(BaseModel):
     is_active: bool
     is_admin: bool
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema for user profile display
 class UserProfile(BaseModel):
@@ -145,8 +143,7 @@ class UserProfile(BaseModel):
     theme_preference: Theme
     created_at: datetime
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Admin dashboard user stats
 class UserStats(BaseModel):
@@ -177,8 +174,7 @@ class ActivityLog(ActivityLogBase):
     timestamp: datetime
     user: Optional[UserList] = None
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Login schemas
 class Token(BaseModel):
@@ -205,11 +201,10 @@ class RefreshTokenDB(RefreshTokenCreate):
     revoked: bool = False
     revoked_at: Optional[datetime] = None
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class TokenRefresh(BaseModel):
     refresh_token: str
 
 # Fix circular reference
-AdminDashboard.update_forward_refs() 
+AdminDashboard.model_rebuild() 
