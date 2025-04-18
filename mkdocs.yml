@@ -1,0 +1,42 @@
+site_name: FastAPI Xtrem Documentation
+site_description: Documentation for the FastAPI Xtrem project
+site_author: FastAPI Xtrem Team
+repo_url: https://github.com/yourusername/FastAPI_Xtrem_Test
+
+nav:
+  - Home: docs/index.md
+  - Guides:
+    - Deployment: docs/guides/DEPLOYMENT.md
+  - Reference:
+    - Project Roadmap: docs/reference/Project_Roadmap.md
+    - Phase 10 Summary: docs/reference/PHASE10_SUMMARY.md
+    - Changelog: docs/reference/CHANGELOG.md
+  - Development:
+    - Contributing: docs/development/CONTRIBUTING.md
+    - Security Notes: docs/development/SECURITY_NOTES.md
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/FastAPI_Xtrem_Test 
